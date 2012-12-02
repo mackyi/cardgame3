@@ -1,0 +1,79 @@
+
+#hand{}
+#hand: first-child{
+	margin-left: 10px;
+} 
+#hand: card{
+	card
+}
+ul.nav{
+	height: 40px;
+}
+
+body{
+	padding: 40px 20px 0px;
+	background-color:#3D3D3D
+}
+
+h2 {
+	color:#DEDEDE;
+}
+.spacer {
+	margin-bottom: 40px;
+}
+
+.gamebox{
+	height: 600px;
+	width:1060px;
+	background-color: #999;
+	margin: 0px;
+}
+
+.gametable{
+	height:70%;
+	background-color: #fff;
+	background-image: url(images/table2.png);
+	position: relative;
+	padding: 5px;
+	margin: 0px;
+}
+
+
+.chatBox{ 
+	font-family:tahoma; 
+	font-size:12px; 
+	padding:0px; 
+	margin:0px; 
+	width: 200px;
+}
+.chatBox p { 
+	line-height:18px; 
+}
+
+#content { 
+	padding:0px; 
+	background:#ddd; 
+	border-radius:5px;
+    border:1px solid #CCC;
+    margin-top:3px; 
+    height: 120px; 
+    overflow:auto;
+}
+#input {
+	border-radius:2px; 
+	border:1px solid #ccc;
+	margin-top:3px; 
+	padding:5px; 
+	width:200px;  }
+#status { 
+	width:88px; 
+	display:block; 
+	float:left; 
+	margin-top:8px; 
+}
+
+
+/*.gamePicture{
+	margin: 5px;
+}*/
+

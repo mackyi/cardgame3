@@ -1,0 +1,86 @@
+
+ul.nav{
+	height: 40px;
+}
+
+body{
+	padding: 40px 20px 0px;
+	background-color:#000
+}
+
+.gamebox{
+	height: 600px;
+	background-color: #555;
+}
+
+.gametable{
+	height:75%;
+	background-color: #fff;
+	background-image: url(images/table2.png);
+	position: relative;
+	padding: 5px;
+}
+
+.card-pic{
+	position: absolute;
+}
+
+.card-pic:first-child{
+	left: 0px;
+}
+
+.card-pic:nth-child(2){
+	left: 20px;
+}
+
+.chatBox{
+	/*font-family:tahoma;
+	font-size:12px;
+	height: 130px;
+    color:black;
+	border: 1px teal solid;
+	overflow: scroll;
+	background-color:white;
+	margin:5px;*/
+
+
+}
+
+.chatBox{ font-family:tahoma; font-size:12px; padding:0px; margin:0px; }
+.chatBox p { line-height:18px; }
+.chatBox div { width:500px; margin-left:auto; margin-right:auto;}
+.chatBox #content { padding:5px; background:#ddd; border-radius:5px;
+                   border:1px solid #CCC; margin-top:10px; height: 400px; overflow:auto;}
+.chatBox #input { border-radius:2px; border:1px solid #ccc;
+                 margin-top:10px; padding:5px; width:400px;  }
+.chatbox #status { width:88px; display:block; float:left; margin-top:15px; }
+
+
+.gamePicture{
+	margin: 5px;
+}
+
+
+
+
+/* CSS Document */
+
+input { font:12px arial; }
+
+#chatbox {
+	text-align:left;
+	margin:0 auto;
+	margin-bottom:2px;
+	padding:5px;
+	background:#fff;
+	height:100px;
+	border:1px solid #ACD8F0;
+	overflow:auto; }
+
+
+#usermsg {
+	margin-top:5px;
+	border:1px solid #ACD8F0;
+	width:75%; }
+
+

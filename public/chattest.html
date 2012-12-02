@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<link href = "cardgame.css" rel= "stylesheet" type="text/css" />
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script>
+$(function () {
+	var socket = io.connect('http://localhost:8080');
+
+	var content = $('#content');
+    var input = $('#input');
+    var status = $('#status');
+
+    // my color assigned by the server
+    var myColor = false;
+    // my name sent to the server
+    var myName = false;
+
+	// on connection to server, ask for user's name with an anonymous callback
+
+	socket.on('connect', function () {
+		console.log('hi')
+        // first we want users to enter their names
+        input.removeAttr('disabled');
+        status.text('Choose name:');
+    });
+    socket.on('history', function(json){
+    	for (var i=0; i < json.data.length; i++) {
+                addMessage(json.data[i].author, json.data[i].text,
+                           json.data[i].color, new Date(json.data[i].time));
+            }
+    })
+	socket.on('color', function(color){
+		console.log(color)
+		myColor = color;
+        status.text(myName + ': ').css('color', myColor);
+        input.removeAttr('disabled').focus();
+        // from now user can start sending messages
+	})
+    input.keydown(function(e) {
+        if (e.keyCode === 13) {
+            var msg = $(this).val();
+            if (!msg) {
+                return;
+            }
+            // send the message as an ordinary text
+            if (myName === false) {
+            	socket.emit('adduser', msg);
+                myName = msg;
+            }
+            else{
+            	//tbd
+            }
+            $(this).val('');
+            // disable the input field to make the user wait until server
+            // sends back response
+            input.attr('disabled', 'disabled');
+            // we know that the first message sent from a user their name
+            
+        }
+    });
+
+	// socket.on('connect', function(){
+        
+	// 	// call the server-side function 'adduser' and send one parameter (value of prompt)
+	// 	socket.emit('adduser', prompt("What's your name?"));
+	// });
+
+	// listener, whenever the server emits 'updatechat', this updates the chat body
+	socket.on('updatechat', function (username, data) {
+		console.log('updatechat');
+		$('#conversation').append('<b>'+username + ':</b> ' + data + '<br>');
+	});
+
+	socket.onerror = function (error) {
+        // just in there were some problems with conenction...
+        content.html($('<p>', { text: 'Sorry, but there\'s some problem with your '
+                                    + 'connection or the server is down.</p>' } ));
+    };
+
+	// listener, whenever the server emits 'updaterooms', this updates the room the client is in
+	socket.on('updaterooms', function(rooms, current_room) {
+		$('#rooms').empty();
+		$.each(rooms, function(key, value) {
+			if(value == current_room){
+				$('#rooms').append('<div>' + value + '</div>');
+			}
+			else {
+				$('#rooms').append('<div><a href="#" onclick="switchRoom(\''+value+'\')">' + value + '</a></div>');
+			}
+		});
+	});
+
+	function switchRoom(room){
+		socket.emit('switchRoom', room);
+	}
+
+	// on load of page
+	$(function(){
+		
+		// when the client clicks SEND
+		$('#datasend').click( function() {
+			var message = $('#data').val();
+			$('#data').val('');
+			// tell server to execute 'sendchat' and send along one parameter
+			socket.emit('sendchat', message);
+		});
+
+		// when the client hits ENTER on their keyboard
+		$('#data').keypress(function(e) {
+			if(e.which == 13) {
+				$(this).blur();
+				$('#datasend').focus().click();
+			}
+		});
+	});
+})
+</script>
+</head>
+<body>
+
+
+<div id="chatBox">
+          <div id="content"></div>
+            <div>
+                <span id="status">Connecting...</span>
+                <input type="text" id="input" disabled="disabled" />
+            </div>
+          </div>
+</body>
+</html>

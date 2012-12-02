@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html lang-"en">
+	<title> Home Page </title>
+	<link href = "bootstrap/css/bootstrap.min.css" rel= "stylesheet" type="text/css"/>
+	<link href = "cardgame.css" rel= "stylesheet" type="text/css" />
+	<link href = "loginStyle.css" rel= "stylesheet" type="text/css" />
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script><meta name="description" content="">
+
+<script>
+	
+jQuery(function($){
+		   
+	// simple jQuery validation script
+	$('#login').submit(function(){
+		
+		var valid = true;
+		var errormsg = 'This field is required!';
+		var errorcn = 'error';
+		
+		$('.' + errorcn, this).remove();			
+		
+		$('.required', this).each(function(){
+			var parent = $(this).parent();
+			if( $(this).val() == '' ){
+				var msg = $(this).attr('title');
+				msg = (msg != '') ? msg : errormsg;
+				$('<span class="'+ errorcn +'">'+ msg +'</span>')
+					.appendTo(parent)
+					.fadeIn('fast')
+					.click(function(){ $(this).remove(); })
+				valid = false;
+			};
+		});
+		
+		return valid;
+	});
+	
+})	
+
+
+
+</script>
+
+</head>
+<body>
+<div class="navbar navbar-fixed-top">  
+    <div class="navbar-inner">  
+	     <div class="container">
+	  	    <ul class="nav">  
+			      <li class="active"><a class="brand" href="#">Card Game</a></li>
+			 	    <li><a href="index.html">Play</a></li>
+	          <li><a href="#">Learn</a></li>
+	          <li><a href="#">Connect</a></li>
+			    </ul> 
+			    <a class="btn btn-primary pull-right"> Log in Now &raquo;</a>
+			  </div>  
+	   </div>  
+	</div>
+
+<form id="login" method="post" action=""> 
+
+    <h1>Log in to your <strong>Card game</strong> account!</h1>
+    <p class="register">Not a member? <a href="#">Register here!</a></p>
+    
+    <div>
+    	<label for="login_username">Username</label> 
+    	<input type="text" name="username" id="login_username" class="field required" title="Please provide your username">
+    </div>			
+
+    <div>
+    	<label for="login_password">Password</label>
+    	<input type="password" name="password" id="login_password" class="field required" title="Password is required">
+    </div>			
+    
+    <p class="forgot"><a href="#">Forgot your password?</a></p>
+    			
+    <div class="submit">
+        <button type="submit">Log in</button>   
+        
+        <label>
+        	<input type="checkbox" name="remember" id="login_remember" value="yes">
+            Remember my login on this computer
+        </label>   
+    </div>
+    
+    <p class="back"><a href="#">Go back to the homepage</a></p>
+  
+</form>	
+
+
+
+</body>
+</html>

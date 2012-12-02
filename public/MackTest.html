@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+	<title> Home Page </title>
+	<link href = "bootstrap/css/bootstrap.min.css" rel= "stylesheet" type="text/css"/>
+	<link href = "cardgame.css" rel= "stylesheet" type="text/css" />
+	
+	
+</head>
+
+<body>
+	<div class="navbar navbar-fixed-top">  
+    <div class="navbar-inner">  
+	     <div class="container">
+	  	    <ul class="nav">  
+			      <li class="active"><a class="brand" href="#">Card Game</a></li>
+			 	    <li><a href="#">Play</a></li>
+	          <li><a href="#">Learn</a></li>
+	          <li><a href="#">Connect</a></li>
+			    </ul> 
+			    <a class="btn btn-primary pull-right"> Log in Now &raquo;</a>
+			  </div>  
+	   </div>  
+	</div>
+
+
+<div class="container">
+  <div class="row">
+		<div class="gamebox">
+      <div class="gametable">
+        <img src="images/cards/c1.gif" id="pic1" />
+        <img src="images/cards/c1.gif" id="pic2" />
+        <div class="btn" id="shuffle">Shuffle</div>
+      </div>
+      <div class="row">
+        <div class="span4">
+          <div id="chatBox">
+            <div id="content"></div>
+              <div>
+                  <span id="status">Connecting...</span>
+                  <input type="text" id="input" disabled="disabled" />
+              </div>
+          </div>
+        </div>
+        <div class="pull-right">
+          <img src="images/defaultprofile.png" class="img-rounded gamePicture">
+        </div>
+      </div>
+    </div> 
+  </div>
+</div> 
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="javascript/gameengine.js"></script>
+  <script src="javascript/war.js"></script>
+  <script src="frontend.js"></script>
+</body>		
+	
+<footer>
+  	<div class="container">
+      	<p> Mack Yi, Tyler Nelson, Alex Song  // Cardgame 2012// That one house course</p>
+    </div>
+		
+</footer>
+</html>
